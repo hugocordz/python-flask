@@ -1,4 +1,4 @@
-Credijusto-Challenge
+Challenge
 ========================
 
 # Create Docker image
