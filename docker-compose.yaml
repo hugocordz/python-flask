@@ -1,0 +1,32 @@
+version: '3'
+services:
+  credijustomysql:
+    image: mysql
+    container_name: credijustomysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_USER: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: mysql --user=$$MYSQL_ROOT_USER --password=$$MYSQL_ROOT_PASSWORD -e 'SHOW DATABASES;'
+      interval: 5s
+      timeout: 20s
+      retries: 10
+#  credijustoapp:
+#    restart: on-failure
+#    image: credijusto-app
+#    container_name: credijusto-mini_app
+#    ports:
+#      - '5000:80'
+#    links:
+#      - credijustomysql
+#    depends_on:
+#      credijustomysql:
+#        condition: service_healthy

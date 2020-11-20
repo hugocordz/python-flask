@@ -1,0 +1,14 @@
+Flask
+datetime
+uuid
+Flask-SQLAlchemy
+PyJWT
+beautifulsoup4
+lxml
+mysql-connector-python
+pycryptodome
+Flask-Limiter
+requests
+python-dotenv
+pytest
+config
