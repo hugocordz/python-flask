@@ -45,5 +45,5 @@ curl --location --request POST 'localhost:5000/register' \                      
 
 - Get Exchange values
 ```shell script
-curl localhost:5000/exchange
-```
+curl --location --request GET 'localhost/exchange' \
+--header 'x-access-token: USE THE TOKEN RETURNED IN LAST CALL'```
