@@ -19,3 +19,31 @@ execute `python app.py`
 
 # PostMan Link 
 `https://www.getpostman.com/collections/263d14fa976716c6aba9`
+
+# Terminal Commands
+- Register user
+```shell script
+curl --location --request POST 'localhost:5000/register' \                                                                                                                                      Sat Nov 21 03:37:48 2020
+                      --header 'Content-Type: application/json' \
+                      --data-raw '{
+                          "password": "test",
+                          "name": "test",
+                          "admin": false
+                      }'
+```
+
+- Login (this will return the token to be used after
+```shell script
+curl --location --request POST 'localhost:5000/register' \                                                                                                                                      Sat Nov 21 03:37:48 2020
+                      --header 'Content-Type: application/json' \
+                      --data-raw '{
+                          "password": "test",
+                          "name": "test",
+                          "admin": false
+                      }'
+```
+
+- Get Exchange values
+```shell script
+curl localhost:5000/exchange
+```

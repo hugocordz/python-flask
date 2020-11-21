@@ -1,7 +1,7 @@
 import requests
 import logging
 import config
-from datetime import datetime
+from datetime import datetime, timedelta
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
@@ -33,10 +33,18 @@ def get_exchange_rate_diario_oficial():
 
 def get_exchange_rate_xml():
     try:
-        today = datetime.now().strftime('%Y-%m-%d')
-        response = requests.get(config.Config.BANXICO_XML_URL.format(today, today))
+        today = datetime.now()
+        response = requests.get(config.Config.BANXICO_XML_URL.format(today.strftime('%Y-%m-%d'), today.strftime('%Y-%m-%d')))
         soup = BeautifulSoup(response.content, features="xml")
-        value = soup.find("dato").contents[0]
+        # Validates if in the current day the prices is published and if is not, look for the value from previous day
+        if hasattr(soup.find("dato"), 'contents'):
+            value = soup.find("dato").contents[0]
+        else:
+            previous_day = requests.get(
+                config.Config.BANXICO_XML_URL.format((today - timedelta(days=1)).strftime('%Y-%m-%d'),
+                                                     (today - timedelta(days=1)).strftime('%Y-%m-%d')))
+            soup = BeautifulSoup(previous_day.content, features="xml")
+            value = soup.find("dato").contents[0]
         date = datetime.strptime(soup.find("fecha").contents[0], '%d/%m/%Y').isoformat()
         return create_result_object(float(value), date)
     except Exception as e:
