@@ -2,7 +2,7 @@ Challenge
 ========================
 
 # Create Docker image
-`docker build . -t credijusto-app`
+`docker build . -t challengeapp`
 
 # Start app with Docker
 `docker-compose up`
@@ -16,3 +16,6 @@ you can run the unit test by `python3 -m unittest tests/test_app.py` just make s
 install dependencies `python install -r requirements.txt`
 have a database and modify the uri db in `app.conf`
 execute `python app.py`
+
+# PostMan Link 
+`https://www.getpostman.com/collections/263d14fa976716c6aba9`

@@ -1,8 +1,8 @@
 version: '3'
 services:
-  credijustomysql:
+  db:
     image: mysql
-    container_name: credijustomysql
+    container_name: challengedb
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
@@ -19,14 +19,14 @@ services:
       interval: 5s
       timeout: 20s
       retries: 10
-#  credijustoapp:
-#    restart: on-failure
-#    image: credijusto-app
-#    container_name: credijusto-mini_app
-#    ports:
-#      - '5000:80'
-#    links:
-#      - credijustomysql
-#    depends_on:
-#      credijustomysql:
-#        condition: service_healthy
+  app:
+    restart: on-failure
+    image: challengeapp
+    container_name: challengeapp
+    ports:
+      - '5000:80'
+    links:
+      - db
+    depends_on:
+      db:
+        condition: service_healthy
