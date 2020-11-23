@@ -26,13 +26,13 @@ Rate Limit is set to 10 per minute
 # Terminal Commands
 - Register user
 ```shell script
-curl --location --request POST 'localhost:5000/register' \                                                                                                                                      Sat Nov 21 03:37:48 2020
-                      --header 'Content-Type: application/json' \
-                      --data-raw '{
-                          "password": "test",
-                          "name": "test",
-                          "admin": false
-                      }'
+curl --location --request POST 'localhost:5000/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "password": "test",
+    "name": "test",
+    "admin": false
+}'
 ```
 
 - Login (this will return the token to be used after
