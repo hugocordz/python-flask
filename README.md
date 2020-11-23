@@ -37,16 +37,12 @@ curl --location --request POST 'localhost:5000/register' \                      
 
 - Login (this will return the token to be used after
 ```shell script
-curl --location --request POST 'localhost:5000/register' \                                                                                                                                      Sat Nov 21 03:37:48 2020
-                      --header 'Content-Type: application/json' \
-                      --data-raw '{
-                          "password": "test",
-                          "name": "test",
-                          "admin": false
-                      }'
+curl --location --request POST 'localhost:5000/login' \
+--header 'Authorization: Basic dGVzdDp0ZXN0'
 ```
 
 - Get Exchange values
 ```shell script
-curl --location --request GET 'localhost/exchange' \
---header 'x-access-token: USE THE TOKEN RETURNED IN LAST CALL'```
+curl --location --request GET 'localhost:5000/exchange' \
+--header 'x-access-token: USE THE TOKEN RETURNED IN LAST CALL'
+```
