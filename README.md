@@ -17,6 +17,9 @@ install dependencies `python install -r requirements.txt`
 have a database and modify the uri db in `app.conf`
 execute `python app.py`
 
+# Rate Limit
+Rate Limit is set to 10 per minute
+
 # PostMan Link 
 `https://www.getpostman.com/collections/263d14fa976716c6aba9`
 
